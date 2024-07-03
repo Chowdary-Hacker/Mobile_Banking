@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "796169319344",
+    "project_id": "uffdc-bank",
+    "storage_bucket": "uffdc-bank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796169319344:android:0bc33551235f3ce49f1c75",
+        "android_client_info": {
+          "package_name": "com.example.uffdcbank"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgKipfZA1SIkxvrutrfHjPD7fNmjWvD3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

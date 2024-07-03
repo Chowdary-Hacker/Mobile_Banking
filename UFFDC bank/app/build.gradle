@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.example.uffdcbank'
+   // def opencvsdk = 'opencv'
+    compileSdk 34
+    ndkVersion "25.1.8937393"
+    defaultConfig {
+        applicationId "com.example.uffdcbank"
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        externalNativeBuild {
+          cmake {
+               cppFlags ""
+            //   arguments "-DOpenCV_DIR=" + opencvsdk + "/native/jni" // , "-DANDROID_ARM_NEON=TRUE"
+           }
+       }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+        setProperty('archivesBaseName', rootProject.name + '-' + defaultConfig.versionName)
+    }
+
+    signingConfigs {
+        release
+    }
+    buildFeatures{
+        buildConfig true
+        aidl = true
+        buildConfig = true
+    }
+    buildTypes {
+        debug {
+            jniDebuggable true
+            buildConfigField "boolean", "DEBUG", "true"
+
+        }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            buildConfigField "boolean", "DEBUG", "false"
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+   // implementation 'com.quickbirdstudios:opencv-contrib:4.5.3'
+    // https://mvnrepository.com/artifact/org.openpnp/opencv
+    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'org.openpnp:opencv:4.8.1-0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation("com.android.volley:volley:1.2.1")
+    implementation 'androidx.annotation:annotation:1.7.0'
+    implementation 'com.google.firebase:firebase-auth:22.3.0'
+    implementation 'com.google.firebase:firebase-database:20.3.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.google.code.gson:gson:2.8.9'
+    //implementation project(path: ':Opencv')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+}
